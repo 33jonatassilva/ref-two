@@ -5,34 +5,34 @@
 
 @layer base {
   :root {
-    --background: 23 32 38;
-    --foreground: 255 255 255;
-    --card: 29 40 47;
-    --card-foreground: 255 255 255;
-    --popover: 29 40 47;
-    --popover-foreground: 255 255 255;
-    --primary: 2 115 115;
-    --primary-foreground: 255 255 255;
-    --secondary: 35 48 56;
-    --secondary-foreground: 255 255 255;
-    --muted: 35 48 56;
-    --muted-foreground: 156 163 175;
-    --accent: 3 138 138;
-    --accent-foreground: 255 255 255;
-    --destructive: 220 38 38;
-    --destructive-foreground: 255 255 255;
-    --border: 35 48 56;
-    --input: 29 40 47;
-    --ring: 2 115 115;
+    --background: 0 0 0;
+    --foreground: 0 255 0;
+    --card: 0 0 0;
+    --card-foreground: 0 255 0;
+    --popover: 0 0 0;
+    --popover-foreground: 0 255 0;
+    --primary: 0 255 0;
+    --primary-foreground: 0 0 0;
+    --secondary: 64 64 64;
+    --secondary-foreground: 0 255 0;
+    --muted: 32 32 32;
+    --muted-foreground: 128 128 128;
+    --accent: 0 255 0;
+    --accent-foreground: 0 0 0;
+    --destructive: 255 0 0;
+    --destructive-foreground: 0 255 0;
+    --border: 64 64 64;
+    --input: 0 0 0;
+    --ring: 0 255 0;
     --radius: 0.5rem;
-    --sidebar-background: 23 32 38;
-    --sidebar-foreground: 255 255 255;
-    --sidebar-primary: 2 115 115;
-    --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 35 48 56;
-    --sidebar-accent-foreground: 255 255 255;
-    --sidebar-border: 35 48 56;
-    --sidebar-ring: 2 115 115;
+    --sidebar-background: 0 0 0;
+    --sidebar-foreground: 0 255 0;
+    --sidebar-primary: 0 255 0;
+    --sidebar-primary-foreground: 0 0 0;
+    --sidebar-accent: 64 64 64;
+    --sidebar-accent-foreground: 0 255 0;
+    --sidebar-border: 64 64 64;
+    --sidebar-ring: 0 255 0;
   }
 }
 
@@ -43,29 +43,41 @@
   
   body {
     @apply bg-background text-foreground;
-    background-color: #172026;
-    color: white;
+    background-color: #000000;
+    color: #00ff00;
   }
   
   html {
-    background-color: #172026;
+    background-color: #000000;
   }
 }
 
 @layer utilities {
   .bg-primary-custom {
-    background-color: #027373;
+    background-color: #00ff00;
   }
   
   .text-primary-custom {
-    color: #027373;
+    color: #00ff00;
   }
   
   .border-primary-custom {
-    border-color: #027373;
+    border-color: #00ff00;
   }
   
   .bg-background-custom {
-    background-color: #172026;
+    background-color: #000000;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #00ff00, #32cd32);
+  }
+  
+  .card-hover {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-2px);
   }
 }
