@@ -5,48 +5,48 @@
 
 @layer base {
   :root {
-    --background: 9 9 11; /* #09090B - Dark slate background */
+    --background: 23 32 38; /* #172026 - Dark slate background */
     --foreground: 250 250 250; /* #FAFAFA - Light gray text */
 
-    --card: 24 24 27; /* #18181B - Darker card background */
+    --card: 30 42 50; /* Slightly lighter than background */
     --card-foreground: 250 250 250; /* #FAFAFA - Light text on cards */
 
-    --popover: 24 24 27; /* #18181B */
+    --popover: 30 42 50; /* Slightly lighter than background */
     --popover-foreground: 250 250 250; /* #FAFAFA */
 
-    --primary: 59 130 246; /* #3B82F6 - Blue primary */
+    --primary: 2 115 115; /* #027373 - Teal primary */
     --primary-foreground: 248 250 252; /* #F8FAFC - Light text on primary */
 
-    --secondary: 39 39 42; /* #27272A - Gray secondary */
+    --secondary: 45 58 68; /* Slightly lighter variant of background */
     --secondary-foreground: 250 250 250; /* #FAFAFA - Light text */
 
-    --muted: 39 39 42; /* #27272A */
+    --muted: 45 58 68; /* Slightly lighter variant */
     --muted-foreground: 161 161 170; /* #A1A1AA - Muted gray text */
 
-    --accent: 30 58 138; /* #1E3A8A - Darker blue accent */
+    --accent: 3 150 150; /* Lighter variant of #027373 */
     --accent-foreground: 248 250 252; /* #F8FAFC */
 
     --destructive: 239 68 68; /* #EF4444 - Red for destructive actions */
     --destructive-foreground: 248 250 252; /* #F8FAFC */
 
-    --border: 39 39 42; /* #27272A - Gray borders */
-    --input: 24 24 27; /* #18181B - Dark input background */
-    --ring: 59 130 246; /* #3B82F6 - Blue focus ring */
+    --border: 45 58 68; /* Subtle borders */
+    --input: 30 42 50; /* Input background */
+    --ring: 2 115 115; /* #027373 - Focus ring */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 24 24 27; /* #18181B */
+    --sidebar-background: 23 32 38; /* #172026 - Same as main background */
     --sidebar-foreground: 250 250 250; /* #FAFAFA */
-    --sidebar-primary: 59 130 246; /* #3B82F6 */
+    --sidebar-primary: 2 115 115; /* #027373 */
     --sidebar-primary-foreground: 248 250 252; /* #F8FAFC */
-    --sidebar-accent: 39 39 42; /* #27272A */
+    --sidebar-accent: 45 58 68; /* Subtle accent */
     --sidebar-accent-foreground: 250 250 250; /* #FAFAFA */
-    --sidebar-border: 39 39 42; /* #27272A */
-    --sidebar-ring: 59 130 246; /* #3B82F6 */
+    --sidebar-border: 45 58 68; /* Subtle borders */
+    --sidebar-ring: 2 115 115; /* #027373 */
 
     --success: 34 197 94; /* #22C55E - Green for success */
     --warning: 245 158 11; /* #F59E0B - Orange for warnings */
-    --info: 59 130 246; /* #3B82F6 - Blue for info */
+    --info: 2 115 115; /* #027373 - Teal for info */
   }
 }
 
@@ -63,7 +63,7 @@
 /* Custom utilities */
 @layer utilities {
   .gradient-bg {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
   }
   
   .gradient-bg-success {
@@ -100,5 +100,22 @@
 
   .glass-effect {
     @apply backdrop-blur-md bg-background/80 border border-border;
+  }
+
+  /* Enhanced dark theme utilities */
+  .bg-surface {
+    background-color: hsl(var(--card));
+  }
+  
+  .bg-surface-elevated {
+    background-color: hsl(var(--popover));
+  }
+  
+  .text-on-surface {
+    color: hsl(var(--card-foreground));
+  }
+  
+  .border-surface {
+    border-color: hsl(var(--border));
   }
 }
