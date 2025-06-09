@@ -61,6 +61,20 @@ export interface Asset {
   organizationId: string;
 }
 
+export interface InventoryItem {
+  id: string;
+  name: string;
+  category: string;
+  quantity: number;
+  minQuantity: number;
+  location: string;
+  organizationId: string;
+  costPerUnit: number;
+  supplier: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface DashboardStats {
   totalPeople: number;
   activePeople: number;

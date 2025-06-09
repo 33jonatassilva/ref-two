@@ -13,7 +13,7 @@ export class DatabaseService {
     return stmt.all() as Organization[];
   }
 
-  createOrganization(org: Omit<Organization, 'id' | 'createdAt' | 'updatedAt'>): string {
+  createOrganization(org: Omit<Organization, 'id' | 'createdAt'>): string {
     const id = crypto.randomUUID();
     const stmt = db.prepare(`
       INSERT INTO organizations (id, name, description)
@@ -29,13 +29,13 @@ export class DatabaseService {
     return stmt.all(organizationId) as Person[];
   }
 
-  createPerson(person: Omit<Person, 'id' | 'createdAt' | 'updatedAt'>): string {
+  createPerson(person: Omit<Person, 'id' | 'licenses' | 'assets' | 'teamName'>): string {
     const id = crypto.randomUUID();
     const stmt = db.prepare(`
-      INSERT INTO people (id, name, email, position, department, organization_id, status)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO people (id, name, email, position, organization_id, status)
+      VALUES (?, ?, ?, ?, ?, ?)
     `);
-    stmt.run(id, person.name, person.email, person.position, person.department, person.organizationId, person.status);
+    stmt.run(id, person.name, person.email, person.position, person.organizationId, person.status);
     return id;
   }
 
@@ -45,16 +45,15 @@ export class DatabaseService {
     return stmt.all(organizationId) as Asset[];
   }
 
-  createAsset(asset: Omit<Asset, 'id' | 'createdAt' | 'updatedAt'>): string {
+  createAsset(asset: Omit<Asset, 'id' | 'assignedToName'>): string {
     const id = crypto.randomUUID();
     const stmt = db.prepare(`
-      INSERT INTO assets (id, name, type, model, serial_number, status, purchase_date, warranty_end, organization_id, assigned_to, location)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO assets (id, name, type, serial_number, status, purchase_date, organization_id, assigned_to)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `);
     stmt.run(
-      id, asset.name, asset.type, asset.model, asset.serialNumber, 
-      asset.status, asset.purchaseDate, asset.warrantyEnd, 
-      asset.organizationId, asset.assignedTo, asset.location
+      id, asset.name, asset.type, asset.serialNumber, 
+      asset.status, asset.purchaseDate, asset.organizationId, asset.assignedTo
     );
     return id;
   }
