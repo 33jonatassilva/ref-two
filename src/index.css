@@ -1,51 +1,38 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 23 32 38; /* #172026 - Base dark background */
-    --foreground: 255 255 255; /* White text for contrast */
-
-    --card: 29 40 47; /* Slightly lighter than background */
-    --card-foreground: 255 255 255; /* White text on cards */
-
-    --popover: 29 40 47; /* Same as card */
-    --popover-foreground: 255 255 255; /* White text */
-
-    --primary: 2 115 115; /* #027373 - Teal primary */
-    --primary-foreground: 255 255 255; /* White text on primary */
-
-    --secondary: 35 48 56; /* Lighter variant of #172026 */
-    --secondary-foreground: 255 255 255; /* White text */
-
-    --muted: 35 48 56; /* Same as secondary */
-    --muted-foreground: 156 163 175; /* Light gray for muted text */
-
-    --accent: 3 138 138; /* Lighter variant of #027373 */
-    --accent-foreground: 255 255 255; /* White text */
-
-    --destructive: 220 38 38; /* Red for destructive actions */
-    --destructive-foreground: 255 255 255; /* White text */
-
-    --border: 35 48 56; /* Subtle borders using lighter variant */
-    --input: 29 40 47; /* Input background same as card */
-    --ring: 2 115 115; /* #027373 for focus ring */
-
+    --background: 23 32 38;
+    --foreground: 255 255 255;
+    --card: 29 40 47;
+    --card-foreground: 255 255 255;
+    --popover: 29 40 47;
+    --popover-foreground: 255 255 255;
+    --primary: 2 115 115;
+    --primary-foreground: 255 255 255;
+    --secondary: 35 48 56;
+    --secondary-foreground: 255 255 255;
+    --muted: 35 48 56;
+    --muted-foreground: 156 163 175;
+    --accent: 3 138 138;
+    --accent-foreground: 255 255 255;
+    --destructive: 220 38 38;
+    --destructive-foreground: 255 255 255;
+    --border: 35 48 56;
+    --input: 29 40 47;
+    --ring: 2 115 115;
     --radius: 0.5rem;
-
-    --sidebar-background: 23 32 38; /* #172026 - Same as main background */
-    --sidebar-foreground: 255 255 255; /* White text */
-    --sidebar-primary: 2 115 115; /* #027373 */
-    --sidebar-primary-foreground: 255 255 255; /* White text */
-    --sidebar-accent: 35 48 56; /* Lighter variant for hover */
-    --sidebar-accent-foreground: 255 255 255; /* White text */
-    --sidebar-border: 35 48 56; /* Subtle borders */
-    --sidebar-ring: 2 115 115; /* #027373 */
-
-    --success: 2 115 115; /* Using teal for success */
-    --warning: 2 115 115; /* Using teal for warning */
-    --info: 2 115 115; /* Using teal for info */
+    --sidebar-background: 23 32 38;
+    --sidebar-foreground: 255 255 255;
+    --sidebar-primary: 2 115 115;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 35 48 56;
+    --sidebar-accent-foreground: 255 255 255;
+    --sidebar-border: 35 48 56;
+    --sidebar-ring: 2 115 115;
   }
 }
 
@@ -53,69 +40,32 @@
   * {
     @apply border-border;
   }
-
+  
   body {
     @apply bg-background text-foreground;
+    background-color: #172026;
+    color: white;
+  }
+  
+  html {
+    background-color: #172026;
   }
 }
 
 @layer utilities {
-  .gradient-bg {
-    background: linear-gradient(135deg, rgb(var(--primary)) 0%, rgb(var(--accent)) 100%);
+  .bg-primary-custom {
+    background-color: #027373;
   }
-
-  .gradient-bg-success {
-    background: linear-gradient(135deg, rgb(var(--success)) 0%, rgb(var(--success) / 0.8) 100%);
+  
+  .text-primary-custom {
+    color: #027373;
   }
-
-  .gradient-bg-warning {
-    background: linear-gradient(135deg, rgb(var(--warning)) 0%, rgb(var(--warning) / 0.8) 100%);
+  
+  .border-primary-custom {
+    border-color: #027373;
   }
-
-  .gradient-bg-info {
-    background: linear-gradient(135deg, rgb(var(--info)) 0%, rgb(var(--info) / 0.8) 100%);
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer;
-  }
-
-  .status-success {
-    @apply bg-primary/20 text-primary border-primary/30;
-  }
-
-  .status-warning {
-    @apply bg-primary/20 text-primary border-primary/30;
-  }
-
-  .status-danger {
-    @apply bg-destructive/20 text-destructive border-destructive/30;
-  }
-
-  .status-info {
-    @apply bg-primary/20 text-primary border-primary/30;
-  }
-
-  .glass-effect {
-    @apply backdrop-blur-md bg-background/80 border border-border;
-  }
-
-  .bg-surface {
-    background-color: rgb(var(--card));
-  }
-
-  .bg-surface-elevated {
-    background-color: rgb(var(--popover));
-  }
-
-  .text-on-surface {
-    color: rgb(var(--card-foreground));
-  }
-
-  .border-surface {
-    border-color: rgb(var(--border));
+  
+  .bg-background-custom {
+    background-color: #172026;
   }
 }
-
-/* Outros estilos não relacionados à configuração de cor */
-
