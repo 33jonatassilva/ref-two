@@ -44,7 +44,7 @@
   body {
     @apply bg-background text-foreground;
     background-color: #000000;
-    color: #00ff00;
+    color: #1F48C6;
   }
   
   html {
@@ -54,15 +54,15 @@
 
 @layer utilities {
   .bg-primary-custom {
-    background-color: #00ff00;
+    background-color: #1F48C6;
   }
   
   .text-primary-custom {
-    color: #00ff00;
+    color: #1F48C6;
   }
   
   .border-primary-custom {
-    border-color: #00ff00;
+    border-color: #1F48C6;
   }
   
   .bg-background-custom {
@@ -70,7 +70,7 @@
   }
   
   .gradient-bg {
-    background: linear-gradient(135deg, #00ff00, #32cd32);
+    background: linear-gradient(135deg, #1F48C6, #1348e8);
   }
   
   .card-hover {
