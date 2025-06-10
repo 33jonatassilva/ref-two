@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { 
@@ -6,7 +5,6 @@ import {
   Users, 
   Shield, 
   Laptop, 
-  Package, 
   Building2,
   ChevronLeft,
   ChevronRight,
@@ -26,7 +24,6 @@ const navigation = [
   { name: 'Pessoas', href: '/people', icon: Users },
   { name: 'Licenças', href: '/licenses', icon: Shield },
   { name: 'Ativos', href: '/assets', icon: Laptop },
-  { name: 'Estoque', href: '/inventory', icon: Package },
   { name: 'Configurações', href: '/settings', icon: Settings },
 ];
 
