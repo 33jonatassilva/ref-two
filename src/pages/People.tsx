@@ -361,7 +361,7 @@ export const People = () => {
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center space-x-2">
-                          <Shield className="w-4 h-4 text-blue-600" />
+                          <Shield className="w-4 h-4 text-green-400" />
                           <span>{personLicenses.length}</span>
                           {personLicenses.length > 0 && (
                             <span className="text-sm text-muted-foreground">
@@ -372,7 +372,7 @@ export const People = () => {
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center space-x-2">
-                          <Laptop className="w-4 h-4 text-green-600" />
+                          <Laptop className="w-4 h-4 text-green-300" />
                           <span>0</span>
                           <span className="text-sm text-muted-foreground">
                             (R$ {assetsCost.toFixed(2)})
@@ -381,7 +381,7 @@ export const People = () => {
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center space-x-2">
-                          <DollarSign className="w-4 h-4 text-purple-600" />
+                          <DollarSign className="w-4 h-4 text-green-500" />
                           <span className="font-medium">R$ {totalCost.toFixed(2)}</span>
                         </div>
                       </TableCell>
@@ -428,29 +428,29 @@ export const People = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold text-primary">{people.length}</p>
+                <p className="text-2xl font-bold text-green-400">{people.length}</p>
                 <p className="text-sm text-muted-foreground">Total de Pessoas</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-green-300">
                   {people.filter(p => p.status === 'active').length}
                 </p>
                 <p className="text-sm text-muted-foreground">Pessoas Ativas</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-green-500">
                   {people.filter(p => p.teamId).length}
                 </p>
                 <p className="text-sm text-muted-foreground">Com Time</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold text-purple-600">
+                <p className="text-2xl font-bold text-green-600">
                   {licenses.reduce((total, license) => total + license.assignedTo.length, 0)}
                 </p>
                 <p className="text-sm text-muted-foreground">Licenças Atribuídas</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold text-orange-600">
+                <p className="text-2xl font-bold text-green-200">
                   R$ {people.reduce((total, person) => total + getTotalPersonCost(person.id), 0).toFixed(2)}
                 </p>
                 <p className="text-sm text-muted-foreground">Custo Total</p>
