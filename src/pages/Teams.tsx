@@ -230,23 +230,23 @@ export const Teams = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold" style={{ color: '#00ff00' }}>{teams.length}</p>
+                <p className="text-2xl font-bold" style={{ color: '#3b82f6' }}>{teams.length}</p>
                 <p className="text-sm text-muted-foreground">Total de Times</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold" style={{ color: '#00dd00' }}>
+                <p className="text-2xl font-bold" style={{ color: '#10b981' }}>
                   {teams.reduce((acc, team) => acc + team.peopleCount, 0)}
                 </p>
                 <p className="text-sm text-muted-foreground">Total de Pessoas</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold" style={{ color: '#00bb00' }}>
+                <p className="text-2xl font-bold" style={{ color: '#8b5cf6' }}>
                   {teams.length > 0 ? Math.round(teams.reduce((acc, team) => acc + team.peopleCount, 0) / teams.length) : 0}
                 </p>
                 <p className="text-sm text-muted-foreground">Média por Time</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <p className="text-2xl font-bold" style={{ color: '#009900' }}>100%</p>
+                <p className="text-2xl font-bold" style={{ color: '#f59e0b' }}>100%</p>
                 <p className="text-sm text-muted-foreground">Times Ativos</p>
               </div>
             </div>
