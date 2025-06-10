@@ -10,7 +10,8 @@ import {
   Building2,
   ChevronLeft,
   ChevronRight,
-  Building
+  Building,
+  Settings
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -26,6 +27,7 @@ const navigation = [
   { name: 'Licenças', href: '/licenses', icon: Shield },
   { name: 'Ativos', href: '/assets', icon: Laptop },
   { name: 'Estoque', href: '/inventory', icon: Package },
+  { name: 'Configurações', href: '/settings', icon: Settings },
 ];
 
 export const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {

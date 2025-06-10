@@ -8,12 +8,18 @@ import { AppProvider } from "./contexts/AppContext";
 import { Layout } from "./components/Layout";
 import { Dashboard } from "./pages/Dashboard";
 import { Teams } from "./pages/Teams";
+import { TeamDetails } from "./pages/TeamDetails";
 import { People } from "./pages/People";
 import { Licenses } from "./pages/Licenses";
 import { Assets } from "./pages/Assets";
 import { Inventory } from "./pages/Inventory";
 import { Organizations } from "./pages/Organizations";
+import { Settings } from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import { initDatabase } from "./lib/database";
+
+// Inicializar o banco de dados
+initDatabase();
 
 const queryClient = new QueryClient();
 
@@ -29,10 +35,12 @@ const App = () => (
               <Route index element={<Dashboard />} />
               <Route path="organizations" element={<Organizations />} />
               <Route path="teams" element={<Teams />} />
+              <Route path="teams/:id" element={<TeamDetails />} />
               <Route path="people" element={<People />} />
               <Route path="licenses" element={<Licenses />} />
               <Route path="assets" element={<Assets />} />
               <Route path="inventory" element={<Inventory />} />
+              <Route path="settings" element={<Settings />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
