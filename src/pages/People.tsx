@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -172,7 +173,6 @@ export const People = () => {
     setDialogOpen(true);
   };
 
-  // Calculate person costs and assignments
   const getPersonLicenses = (personId: string) => {
     return licenses.filter(license => license.assignedTo.includes(personId));
   };
@@ -344,7 +344,14 @@ export const People = () => {
 
                   return (
                     <TableRow key={person.id}>
-                      <TableCell className="font-medium">{person.name}</TableCell>
+                      <TableCell className="font-medium">
+                        <Link 
+                          to={`/people/${person.id}`}
+                          className="text-primary hover:underline"
+                        >
+                          {person.name}
+                        </Link>
+                      </TableCell>
                       <TableCell>
                         <div className="flex items-center space-x-2">
                           <Mail className="w-4 h-4 text-muted-foreground" />

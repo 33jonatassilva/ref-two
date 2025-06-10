@@ -1,3 +1,4 @@
+
 export interface Organization {
   id: string;
   name: string;
@@ -30,6 +31,7 @@ export interface Person {
   assets: Asset[];
   responsibilityTermUrl?: string;
   organizationId: string;
+  managerId?: string; // ID do manager/supervisor
 }
 
 export interface License {
