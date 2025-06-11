@@ -44,7 +44,7 @@ export const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
                 <Building2 className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-sidebar-foreground">GestãoPro</h1>
+                <h1 className="text-lg font-bold text-sidebar-foreground">Tools Infra</h1>
                 <p className="text-xs text-muted-foreground">Sistema de Gestão</p>
               </div>
             </div>
