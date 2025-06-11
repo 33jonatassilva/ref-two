@@ -45,7 +45,7 @@ export const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
                 <img 
                   src="/lovable-uploads/65175c3d-3a3e-4412-bfb7-6cac7dc0c689.png" 
                   alt="Infra Tools Logo" 
-                  className="w-8 h-8 object-contain"
+                  className="w-8 h-8 object-contain rounded-lg"
                 />
               </div>
               <div>
