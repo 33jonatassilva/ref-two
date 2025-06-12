@@ -3,11 +3,12 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Instalar dependências do sistema necessárias para better-sqlite3
-RUN apk add --no-cache python3 make g++
+# Instalar dependências do sistema necessárias
+RUN apk add --no-cache python3 make g++ git
 
 # Copiar arquivos de dependências
 COPY package*.json ./
+COPY bun.lockb ./
 
 # Instalar dependências
 RUN npm ci --only=production
@@ -15,8 +16,8 @@ RUN npm ci --only=production
 # Copiar código fonte
 COPY . .
 
-# Criar diretório de banco de dados
-RUN mkdir -p database
+# Criar diretório de banco de dados com permissões corretas
+RUN mkdir -p database && chmod 755 database
 
 # Build da aplicação
 RUN npm run build
