@@ -6,12 +6,11 @@ WORKDIR /app
 # Instalar dependências do sistema necessárias incluindo curl para health check
 RUN apk add --no-cache python3 make g++ git curl
 
-# Copiar arquivos de dependências
+# Copiar arquivos de dependências primeiro (para cache do Docker)
 COPY package*.json ./
-COPY bun.lockb ./
 
-# Instalar dependências
-RUN npm install
+# Instalar TODAS as dependências (incluindo devDependencies)
+RUN npm ci
 
 # Copiar código fonte
 COPY . .

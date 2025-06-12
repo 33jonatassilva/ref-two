@@ -6,12 +6,11 @@ WORKDIR /app
 # Instalar dependências do sistema necessárias incluindo curl para health check
 RUN apk add --no-cache python3 make g++ git curl
 
-# Copiar arquivos de dependências
+# Copiar arquivos de dependências primeiro (para cache do Docker)
 COPY package*.json ./
-COPY bun.lockb ./
 
-# Instalar dependências
-RUN npm ci --only=production
+# Instalar TODAS as dependências primeiro (incluindo devDependencies para build)
+RUN npm ci
 
 # Copiar código fonte
 COPY . .
@@ -19,8 +18,11 @@ COPY . .
 # Criar diretório de banco de dados com permissões corretas
 RUN mkdir -p database && chmod 755 database
 
-# Build da aplicação
+# Build da aplicação (requer devDependencies)
 RUN npm run build
+
+# Remover devDependencies após build para otimizar imagem final
+RUN npm prune --production
 
 # Expor porta
 EXPOSE 8080
