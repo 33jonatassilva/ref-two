@@ -3,8 +3,8 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Instalar dependências do sistema necessárias
-RUN apk add --no-cache python3 make g++ git
+# Instalar dependências do sistema necessárias incluindo curl para health check
+RUN apk add --no-cache python3 make g++ git curl
 
 # Copiar arquivos de dependências
 COPY package*.json ./
