@@ -2,14 +2,11 @@
 # Dockerfile para desenvolvimento
 FROM node:18-alpine
 
-# Instalar dumb-init
-RUN apk add --no-cache dumb-init
+# Instalar dumb-init e wget
+RUN apk add --no-cache dumb-init wget
 
 # Definir diretório de trabalho
 WORKDIR /app
-
-# Instalar dependências globais úteis para desenvolvimento
-RUN npm install -g nodemon
 
 # Copiar arquivos de dependências
 COPY package*.json ./
@@ -24,7 +21,7 @@ RUN mkdir -p /app/database
 EXPOSE 5173
 
 # Health check para desenvolvimento
-HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:5173/ || exit 1
 
 # Comando para desenvolvimento com hot reload

@@ -8,7 +8,7 @@ WORKDIR /app
 # Copiar arquivos de dependências
 COPY package*.json ./
 
-# Instalar dependências incluindo devDependencies para build
+# Instalar todas as dependências para build
 RUN npm ci
 
 # Copiar código fonte
@@ -21,7 +21,7 @@ RUN npm run build
 FROM node:18-alpine AS production
 
 # Instalar dumb-init para manejo correto de sinais
-RUN apk add --no-cache dumb-init
+RUN apk add --no-cache dumb-init wget
 
 # Criar usuário não-root para segurança
 RUN addgroup -g 1001 -S nodejs
@@ -33,8 +33,8 @@ WORKDIR /app
 # Copiar arquivos de dependências
 COPY package*.json ./
 
-# Instalar apenas dependências de produção
-RUN npm ci --omit=dev && npm cache clean --force
+# Instalar dependências necessárias para preview
+RUN npm ci && npm cache clean --force
 
 # Copiar build da aplicação do estágio anterior
 COPY --from=builder --chown=nextjs:nodejs /app/dist ./dist
@@ -50,7 +50,7 @@ USER nextjs
 EXPOSE 8080
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
 
 # Comando para iniciar aplicação
