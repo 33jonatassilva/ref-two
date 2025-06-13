@@ -33,12 +33,12 @@ WORKDIR /app
 # Copiar arquivos de dependências
 COPY package*.json ./
 
-# Instalar dependências necessárias para preview
-RUN npm ci && npm cache clean --force
+# Instalar dependências necessárias para produção (incluindo express)
+RUN npm ci --omit=dev && npm install express && npm cache clean --force
 
 # Copiar build da aplicação do estágio anterior
 COPY --from=builder --chown=nextjs:nodejs /app/dist ./dist
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/server ./server
 
 # Criar diretório para banco de dados
 RUN mkdir -p /app/database && chown nextjs:nodejs /app/database
@@ -55,4 +55,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
 
 # Comando para iniciar aplicação
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["node", "server/index.js"]
