@@ -21,21 +21,18 @@ export const Teams = () => {
   const [editingTeam, setEditingTeam] = useState<Team | undefined>();
 
   const loadTeams = async () => {
-    if (!currentOrganization) {
-      setTeams([]);
-      setLoading(false);
-      return;
-    }
-
-    setLoading(true);
+    if (!currentOrganization) return;
+    
     try {
-      const teamsData = teamsService.getAll(currentOrganization.id);
+      setLoading(true);
+      const teamsData = await teamsService.getAll(currentOrganization.id);
       setTeams(teamsData);
     } catch (error) {
+      console.error('Erro ao carregar times:', error);
       toast({
-        title: 'Erro!',
-        description: 'Não foi possível carregar os times.',
-        variant: 'destructive',
+        title: 'Erro',
+        description: 'Erro ao carregar times',
+        variant: 'destructive'
       });
     } finally {
       setLoading(false);

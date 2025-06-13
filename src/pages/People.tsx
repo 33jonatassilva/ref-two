@@ -44,28 +44,23 @@ export const People = () => {
   });
 
   const loadData = async () => {
-    if (!currentOrganization) {
-      setPeople([]);
-      setTeams([]);
-      setLicenses([]);
-      setLoading(false);
-      return;
-    }
-
-    setLoading(true);
+    if (!currentOrganization) return;
+    
     try {
-      const peopleData = peopleService.getAll(currentOrganization.id);
-      const teamsData = teamsService.getAll(currentOrganization.id);
-      const licensesData = licensesService.getAll(currentOrganization.id);
+      setLoading(true);
+      const [peopleData, teamsData] = await Promise.all([
+        peopleService.getAll(currentOrganization.id),
+        teamsService.getAll(currentOrganization.id)
+      ]);
+      
       setPeople(peopleData);
       setTeams(teamsData);
-      setLicenses(licensesData);
     } catch (error) {
       console.error('Erro ao carregar dados:', error);
       toast({
-        title: 'Erro!',
-        description: 'Não foi possível carregar os dados.',
-        variant: 'destructive',
+        title: 'Erro',
+        description: 'Erro ao carregar dados',
+        variant: 'destructive'
       });
     } finally {
       setLoading(false);
